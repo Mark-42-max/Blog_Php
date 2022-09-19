@@ -9,7 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-    <?= $post; ?>
+        <article class="post">
+            <h1 class="post-title"> {{ $post->title }} </h1>
+
+            {!! $post->body !!}
+        </article>
 
     <a href="/">Go back</a>
 

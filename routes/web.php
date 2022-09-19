@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Models\Posts;
+use \Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::get('/posts/{post}', function ($slug) {
     $post = Posts::find($slug);
     return view('post', ['post' => $post]);
 
-})->where('post' , '[A-z0-9_\-]+' );
+});
+
+//->where('post', '[A-z_\-]+');
 
 
