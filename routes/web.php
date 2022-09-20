@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Models\Posts;
+use \App\Models\Post;
 use \Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
@@ -17,12 +17,12 @@ use \Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Posts::all()
+        'posts' => Post::all()
     ]);
 });
 
-Route::get('/posts/{post}', function ($slug) {
-    $post = Posts::find($slug);
+Route::get('/posts/{post}', function (Post $post) {
+    //$post = Post::findOrFail($id);
     return view('post', ['post' => $post]);
 
 });
