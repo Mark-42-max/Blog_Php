@@ -17,53 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //only run seeders if the database is empty
 
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
-
-        $user = User::factory(1)->create();
-
-        $family = Category::create([
-            'name' => 'Family',
-            'slug' => 'family',
-        ]);
-
-        $work = Category::create([
-            'name' => 'Work',
-            'slug' => 'work',
-        ]);
-
-        $hobby = Category::create([
-            'name' => 'Hobby',
-            'slug' => 'hobby',
-        ]);
-
-        Post::create([
-            'user_id' => 1,
-            'category_id' => 1,
-            'title' => 'My Family',
-            'slug' => 'my-family',
-            'excerpt' => 'My Family is the best',
-            'body' => 'My Family is the best reset your application successful_response',
-        ]);
-
-        Post::create([
-            'user_id' => 2,
-            'category_id' => 2,
-            'title' => 'My Work',
-            'slug' => 'my-work',
-            'excerpt' => 'My Work is the best',
-            'body' => 'My Work is the best reset your application successful_response',
-        ]);
-
-        Post::create([
-            'user_id' => 3,
-            'category_id' => 3,
-            'title' => 'My Hobby',
-            'slug' => 'my-hobby',
-            'excerpt' => 'My Hobby is the best',
-            'body' => 'My Hobby is the best reset your application successful_response',
+        $user = User::factory()->create();
+        Post::factory(5)->create([
+            'user_id' => $user->id,
         ]);
     }
 }

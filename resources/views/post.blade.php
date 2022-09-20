@@ -12,7 +12,7 @@
         <article class="post">
             <h1 class="post-title"> {{ $post->title }} </h1>
 
-            <p>By <a href="#">{{$post->user->name}}</a> from <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a></p>
+            <p>By <a href="#">{{$post->author->name}}</a> from <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a></p>
 
             {!! $post->body !!}
         </article>
