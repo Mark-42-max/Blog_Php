@@ -13,6 +13,8 @@
     <article class="post">
         <h1 class="post-title"><a href="/posts/{{$post->slug}}">{{$post->title}}</a></h1>
 
+        <p><a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a></p>
+
         {{$post->excerpt }}
     </article>
     @endforeach
