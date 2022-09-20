@@ -19,9 +19,14 @@ class DatabaseSeeder extends Seeder
     {
         //only run seeders if the database is empty
 
-        $user = User::factory()->create();
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
         Post::factory(5)->create([
-            'user_id' => $user->id,
+            'user_id' => $user1->id,
+        ]);
+
+        Post::factory(5)->create([
+            'user_id' => $user2->id,
         ]);
     }
 }

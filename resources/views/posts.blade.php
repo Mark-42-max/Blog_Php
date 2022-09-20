@@ -1,23 +1,42 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Blog Site</title>
-</head>
-<body>
-    @foreach ($posts as $post)
-    <article class="post">
-        <h1 class="post-title"><a href="/posts/{{$post->slug}}">{{$post->title}}</a></h1>
 
-        <p>By <a href="/authors/{{ $post->author->id }}">{{ $post->author->name }}</a> from <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a></p>
+{{--    @foreach ($posts as $post)--}}
+{{--    <article class="post">--}}
+{{--        <h1 class="post-title"><a href="/posts/{{$post->slug}}">{{$post->title}}</a></h1>--}}
 
-        {{$post->excerpt }}
-    </article>
-    @endforeach
+{{--        <p>By <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> from <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a></p>--}}
 
-</body>
-</html>
+{{--        {{$post->excerpt }}--}}
+{{--    </article>--}}
+{{--    @endforeach--}}
+
+<x-layout >
+
+    <x-_posts-header :categories="$categories"/>
+
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+
+        @if ($posts->count())
+        <x-post-card-special :post="$posts[0]"/>
+
+        <div class="lg:grid lg:grid-cols-2">
+
+            @foreach ($posts->skip(1) as $post)
+                <x-post-card :post="$post"/>
+            @endforeach
+        </div>
+
+        @else
+            <p class="text-center">No posts yet. Please check back later.</p>
+        @endif
+
+{{--        <div class="lg:grid lg:grid-cols-3">--}}
+{{--            <x-post-card />--}}
+
+{{--            <x-post-card />--}}
+
+{{--            <x-post-card />--}}
+{{--        </div>--}}
+    </main>
+
+</x-layout>
+
