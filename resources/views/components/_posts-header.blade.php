@@ -19,7 +19,7 @@
 
             <div x-data="{show: false}" @click.away="show = false">
                 <button @click="show = ! show" class="py-2 pl-3 pr-9 text-sm font-semibold inline-flex">
-                    Category
+                    {{isset($currentCategory) ? ucwords($currentCategory) : 'Categories'}}
                     <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"
                          height="22" viewBox="0 0 22 22">
                         <g fill="none" fill-rule="evenodd">
@@ -34,17 +34,10 @@
                 <div x-show="show" class="py-2 absolute bg-gray-100 w-full mt-2 rounded-xl z-50" style="display: none">
 
                     @foreach($categories as $category)
-                    <a href="/categories/{{$category->slug}}" class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white">{{$category->name}}</a>
+                    <a href="?category={{$category->slug}}" class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white">{{ucwords($category->name)}}</a>
                     @endforeach
                 </div>
             </div>
-{{--            <select class="flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold">--}}
-{{--                <option value="category" disabled selected>Category--}}
-{{--                </option>--}}
-{{--                @foreach($categories as $category)--}}
-{{--                    <option value="{{$category->slug}}">{{$category->name}}</option>--}}
-{{--                @endforeach--}}
-{{--            </select>--}}
 
         </div>
 
@@ -74,7 +67,7 @@
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
             <form method="GET" action="#">
                 <input type="text" name="search" placeholder="Find something"
-                       class="bg-transparent placeholder-black font-semibold text-sm">
+                       class="bg-transparent placeholder-black font-semibold text-sm" value="{{request('search')}}">
             </form>
         </div>
     </div>
