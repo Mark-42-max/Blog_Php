@@ -1,0 +1,1 @@
+//view for email normal
