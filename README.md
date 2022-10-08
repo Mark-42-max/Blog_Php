@@ -1,6 +1,6 @@
-# Blog Post Page
+# Simple Blog Site
 
-A project for demonstrating full stack blog post project in Laravel
+A simple project for demonstrating full stack blog post project in Laravel. This project provides the full power of a blog post site like reading and sharing blogs. Users can choose to sign in if they wish to publish their own blog. The project is still under development and MIT Licensed.
 
 
 ## What are the scopes to learn
